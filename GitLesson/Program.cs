@@ -3,7 +3,7 @@
 ProcessStartInfo startInfo = new ProcessStartInfo("git.exe");
 
 startInfo.UseShellExecute = false;
-startInfo.WorkingDirectory = "dir Here";
+startInfo.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory.Replace("\\GitLesson\\bin\\Debug\\net7.0\\", string.Empty);
 startInfo.RedirectStandardInput = true;
 startInfo.RedirectStandardOutput = true;
 startInfo.Arguments = "rev-parse --abbrev-ref HEAD";
@@ -13,4 +13,5 @@ process.StartInfo = startInfo;
 process.Start();
 
 string branchname = process.StandardOutput.ReadLine();
-Console.WriteLine(branchname);
+Console.WriteLine($"you are on branch: {branchname}");
+Console.ReadLine();
